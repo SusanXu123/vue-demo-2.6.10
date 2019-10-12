@@ -13,10 +13,15 @@
         <a class="span">删除</a>
       </template>
     </current-user>
+    <!-- 默认插槽的缩写语法不能和具名插槽混用，因为它会导致作用域不明确： -->
+    <default-slot v-slot="slotProps">
+      <h2>{{slotProps.text}}</h2>
+    </default-slot>
   </div>
 </template>
 <script>
 import CurrentUser from '@/components/slot/current-user.vue'
+import DefaultSlot from '@/components/slot/default-slot.vue'
 export default {
   data () {
     return {
@@ -29,10 +34,10 @@ export default {
       ]
     }
   },
-  components: {CurrentUser}
+  components: {CurrentUser, DefaultSlot}
 }
 </script>
-<style>
+<style scope>
 .span {
   display: inline-block;
   width: 10%;
