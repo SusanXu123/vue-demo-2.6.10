@@ -17,11 +17,16 @@
     <default-slot v-slot="slotProps">
       <h2>{{slotProps.text}}</h2>
     </default-slot>
+    <destructure-slot-props v-slot="{content: {text}}">
+      <h2>{{text}}</h2>
+    </destructure-slot-props>
   </div>
 </template>
 <script>
 import CurrentUser from '@/components/slot/current-user.vue'
 import DefaultSlot from '@/components/slot/default-slot.vue'
+import DestructureSlotProps from '@/components/slot/destructure-slot-props.vue'
+
 export default {
   data () {
     return {
@@ -34,7 +39,7 @@ export default {
       ]
     }
   },
-  components: {CurrentUser, DefaultSlot}
+  components: {CurrentUser, DefaultSlot, DestructureSlotProps}
 }
 </script>
 <style scope>
