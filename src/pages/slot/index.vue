@@ -28,6 +28,14 @@
         <h2>动态插槽{{dynamicSlot}}</h2>
       </template>
     </dynamic-slot-name>
+    <shorthand-named-slot>
+      <template #header>
+        具名插槽缩写
+      </template>
+      <template #default="{content: {name}}">
+        {{name}}
+      </template>
+    </shorthand-named-slot>
   </div>
 </template>
 <script>
@@ -35,6 +43,7 @@ import CurrentUser from '@/components/slot/current-user.vue'
 import DefaultSlot from '@/components/slot/default-slot.vue'
 import DestructureSlotProps from '@/components/slot/destructure-slot-props.vue'
 import DynamicSlotName from '@/components/slot/dynamic-slot-name.vue'
+import ShorthandNamedSlot from '@/components/slot/shorthand-named-slot.vue'
 
 export default {
   name: 'slot-page',
@@ -55,7 +64,8 @@ export default {
     CurrentUser,
     DefaultSlot,
     DestructureSlotProps,
-    DynamicSlotName
+    DynamicSlotName,
+    ShorthandNamedSlot
   },
   methods: {
     switchDynamicSlotName () {
