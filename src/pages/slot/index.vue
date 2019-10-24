@@ -1,5 +1,6 @@
 <template>
   <div>
+    <button @click="countHandler">{{count}}</button>
     <current-user :users="users"  odd-bgcolor="#D3DCE6" even-bgcolor="#E5E9F2">
       <template v-slot:header>
         <h1>user list</h1>
@@ -20,26 +21,50 @@
     <destructure-slot-props v-slot="{content: {text}}">
       <h2>{{text}}</h2>
     </destructure-slot-props>
+    <!-- <button @click="switchDynamicSlotName"></button> -->
+    <dynamic-slot-name>
+      <!-- <template v-slot:[dynamicSlot]></template> -->
+      <template v-slot:header>
+        <h2>动态插槽{{dynamicSlot}}</h2>
+      </template>
+    </dynamic-slot-name>
   </div>
 </template>
 <script>
 import CurrentUser from '@/components/slot/current-user.vue'
 import DefaultSlot from '@/components/slot/default-slot.vue'
 import DestructureSlotProps from '@/components/slot/destructure-slot-props.vue'
+import DynamicSlotName from '@/components/slot/dynamic-slot-name.vue'
 
 export default {
+  name: 'slot-page',
   data () {
     return {
+      count: 0,
       users: [
         {id: 1, name: '张三', age: 21},
         {id: 2, name: '李四', age: 22},
         {id: 3, name: '王五', age: 27},
         {id: 4, name: '张龙', age: 27},
         {id: 5, name: '赵虎', age: 27}
-      ]
+      ],
+      dynamicSlot: 'header'
     }
   },
-  components: {CurrentUser, DefaultSlot, DestructureSlotProps}
+  components: {
+    CurrentUser,
+    DefaultSlot,
+    DestructureSlotProps,
+    DynamicSlotName
+  },
+  methods: {
+    switchDynamicSlotName () {
+      this.dynamicSlot = this.dynamicSlot === 'header' ? 'footer' : 'header'
+    },
+    countHandler () {
+      this.count = this.count + 1
+    }
+  }
 }
 </script>
 <style scope>

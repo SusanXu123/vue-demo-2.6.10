@@ -6,7 +6,7 @@
 <script>
 export default {
   // 解构插槽prop
-  name: 'destructure-slot-propos',
+  name: 'destructure-slot-props',
   data () {
     return {
       content: {

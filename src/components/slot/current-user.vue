@@ -8,6 +8,7 @@
 </template>
 <script>
 export default {
+  name: 'current-user',
   props: {
     users: Array,
     oddBgcolor: String,
